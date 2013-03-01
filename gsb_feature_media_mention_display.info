@@ -1,11 +1,13 @@
 name = GSB Feature Media Mention Display
 core = 7.x
 package = GSB
+php = 5.2.4
 version = 7.x-1.0
 project = gsb_feature_media_mention_display
+dependencies[] = ctools
 dependencies[] = views
 dependencies[] = views_content
+datestamp = 1362154514
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[views_view][] = gsb_media_mention
-features_exclude[dependencies][ctools] = ctools
