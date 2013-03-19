@@ -45,7 +45,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
-  /* Field: Content: Editorial Summary */
+  /* Field: Field: Editorial Summary */
   $handler->display->display_options['fields']['field_editorial_summary']['id'] = 'field_editorial_summary';
   $handler->display->display_options['fields']['field_editorial_summary']['table'] = 'field_data_field_editorial_summary';
   $handler->display->display_options['fields']['field_editorial_summary']['field'] = 'field_editorial_summary';
@@ -72,7 +72,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['fields']['field_last_name']['field'] = 'field_last_name';
   $handler->display->display_options['fields']['field_last_name']['label'] = '';
   $handler->display->display_options['fields']['field_last_name']['element_label_colon'] = FALSE;
-  /* Field: Content: Content Image */
+  /* Field: Field: Content Image */
   $handler->display->display_options['fields']['field_content_image']['id'] = 'field_content_image';
   $handler->display->display_options['fields']['field_content_image']['table'] = 'field_data_field_content_image';
   $handler->display->display_options['fields']['field_content_image']['field'] = 'field_content_image';
