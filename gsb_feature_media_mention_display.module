@@ -5,3 +5,61 @@
  */
 
 include_once 'gsb_feature_media_mention_display.features.inc';
+
+
+/**
+ * Implements hook_apachesolr_index_document_build_node
+ *
+ */
+function gsb_feature_media_mention_display_apachesolr_index_document_build_node(ApacheSolrDocument $document, $entity, $env_id)
+{
+  // Index field_date_published as a separate field
+  if ($entity->type == 'media_mention') {
+
+    if (!empty($entity->field_date_published)) {
+      $timestamp = strtotime($entity->field_date_published[LANGUAGE_NONE][0]['value']);
+      $document->setMultiValue('sm_field_date_published_format_month_day', date("M d", $timestamp));
+    }
+
+
+    $field_names_array = array("field_business_insight_topic", "field_discipline", "field_industry",
+      "field_region", "field_target_audience", "field_company_organization", "field_tag");
+    foreach ($field_names_array as $field_name)
+      if (!empty($entity->$field_name)) {
+        $used_term = array();
+        foreach (reset($entity->$field_name) as $value) {
+          $term = taxonomy_term_load($value['tid']);
+          $intersect = array_intersect($used_term, array($value['tid']));
+          if (empty($intersect))
+            $document->setMultiValue('sm_field_tags_apachesolr', $value['tid'] . '>>>' . $term->name);
+          $used_term[] = $value['tid'];
+        }
+      }
+
+    if (!empty($entity->field_editorial_summary)) {
+      $document->setMultiValue('sm_field_body_apachesolr', $entity->field_editorial_summary[LANGUAGE_NONE][0]['value']);
+    }
+
+    if (!empty($entity->field_publisher)) {
+      $document->setMultiValue('sm_field_publisher_apachesolr', $entity->field_publisher[LANGUAGE_NONE][0]['value']);
+    }
+
+    if (!empty($entity->field_image_single_public)) {
+      $document->setMultiValue('sm_field_image_apachesolr', $entity->field_image_single_public[LANGUAGE_NONE][0]['uri']);
+    }
+
+  }
+}
+
+function gsb_feature_media_mention_display_preprocess_views_view_fields(&$variables)
+{
+  if (!empty($variables['fields']['sm_field_image_apachesolr'])) {
+    $settings = array(
+      'style_name' => '270x158',
+      'path' => $variables['fields']['sm_field_image_apachesolr']->raw[0],
+      'width' => "270",
+      'height' => "158",
+    );
+    $variables['fields']['sm_field_image_apachesolr']->content = theme('image_style', $settings);
+  }
+}
