@@ -399,7 +399,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['bundle']['table'] = 'apachesolr__acquia_search_server_1';
   $handler->display->display_options['filters']['bundle']['field'] = 'bundle';
   $handler->display->display_options['filters']['bundle']['value'] = 'research_paper';
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Apache Solr: Search */
   $handler->display->display_options['filters']['keyword']['id'] = 'keyword';
   $handler->display->display_options['filters']['keyword']['table'] = 'apachesolr__acquia_search_server_1';
   $handler->display->display_options['filters']['keyword']['field'] = 'keyword';
@@ -488,7 +488,9 @@ function gsb_feature_media_mention_display_views_default_views() {
       ),
     ),
   );
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['alternating'] = 0;
@@ -585,6 +587,27 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Tag (field_tag) */
+  $handler->display->display_options['arguments']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['arguments']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tag_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_tag_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['vocabularies'] = array(
+    'business_insight_topic' => 'business_insight_topic',
+    'company_organization' => 'company_organization',
+    'discipline' => 'discipline',
+    'industry' => 'industry',
+    'region' => 'region',
+    'tag' => 'tag',
+    'target_audience' => 'target_audience',
+  );
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_tag_tid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -664,6 +687,115 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Media Mention list', 'medai_mention_list');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['argument_input'] = array(
+    'field_tag_tid' => array(
+      'type' => 'panel',
+      'context' => 'entity:field_collection_item.field_cta_action',
+      'context_optional' => 0,
+      'panel' => '1',
+      'fixed' => '',
+      'label' => 'Content: Tag (field_tag)',
+    ),
+  );
+
+  /* Display: media-mention-by-id */
+  $handler = $view->new_display('panel_pane', 'media-mention-by-id', 'media_mention_by_id');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'media_mention' => 'media_mention',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'publication' => 'publication',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'nid' => array(
+      'type' => 'user',
+      'context' => 'entity:field_collection_item.field_cta_action',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Nid',
+    ),
+  );
+
+  /* Display: media-mention-by-tag */
+  $handler = $view->new_display('panel_pane', 'media-mention-by-tag', 'media_mention_by_tag');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'publication' => 'publication',
+  );
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'field_tag_tid' => array(
+      'type' => 'user',
+      'context' => 'entity:field_collection_item.field_cta_action',
+      'context_optional' => 0,
+      'panel' => '1',
+      'fixed' => '',
+      'label' => 'Tag',
+    ),
+  );
   $export['media_mention_filters'] = $view;
 
   return $export;
