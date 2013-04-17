@@ -15,7 +15,7 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Media Mention search page';
   $page->admin_description = '';
-  $page->path = 'media-mention-search/!keywords';
+  $page->path = 'newsroom/media-mentions/!keywords';
   $page->access = array(
     'plugins' => array(
       0 => array(
