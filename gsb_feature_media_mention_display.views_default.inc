@@ -51,12 +51,6 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_summary']['field'] = 'field_editorial_summary';
   $handler->display->display_options['fields']['field_editorial_summary']['label'] = '';
   $handler->display->display_options['fields']['field_editorial_summary']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
-  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['label'] = '';
-  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   /* Field: Field: First Name */
   $handler->display->display_options['fields']['field_first_name']['id'] = 'field_first_name';
   $handler->display->display_options['fields']['field_first_name']['table'] = 'field_data_field_first_name';
@@ -69,18 +63,6 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['fields']['field_last_name']['field'] = 'field_last_name';
   $handler->display->display_options['fields']['field_last_name']['label'] = '';
   $handler->display->display_options['fields']['field_last_name']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_content_image']['id'] = 'field_content_image';
-  $handler->display->display_options['fields']['field_content_image']['table'] = 'field_data_field_content_image';
-  $handler->display->display_options['fields']['field_content_image']['field'] = 'field_content_image';
-  $handler->display->display_options['fields']['field_content_image']['label'] = '';
-  $handler->display->display_options['fields']['field_content_image']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_content_image_caption']['id'] = 'field_content_image_caption';
-  $handler->display->display_options['fields']['field_content_image_caption']['table'] = 'field_data_field_content_image_caption';
-  $handler->display->display_options['fields']['field_content_image_caption']['field'] = 'field_content_image_caption';
-  $handler->display->display_options['fields']['field_content_image_caption']['label'] = '';
-  $handler->display->display_options['fields']['field_content_image_caption']['element_label_colon'] = FALSE;
   /* Field: Content: Date Published */
   $handler->display->display_options['fields']['field_date_published']['id'] = 'field_date_published';
   $handler->display->display_options['fields']['field_date_published']['table'] = 'field_data_field_date_published';
@@ -93,6 +75,22 @@ function gsb_feature_media_mention_display_views_default_views() {
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+  );
+  /* Field: Content: Photo */
+  $handler->display->display_options['fields']['field_image_single_public']['id'] = 'field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['field'] = 'field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['label'] = '';
+  $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
   );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -115,7 +113,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gsb_media_mention' => 'gsb_media_mention',
+    'media_mention' => 'media_mention',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Nid */
