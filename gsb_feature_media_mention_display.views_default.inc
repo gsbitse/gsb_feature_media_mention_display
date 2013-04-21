@@ -507,26 +507,6 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|created';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  /* Field: Content: Date Published */
-  $handler->display->display_options['fields']['field_date_published']['id'] = 'field_date_published';
-  $handler->display->display_options['fields']['field_date_published']['table'] = 'field_data_field_date_published';
-  $handler->display->display_options['fields']['field_date_published']['field'] = 'field_date_published';
-  $handler->display->display_options['fields']['field_date_published']['label'] = 'Date posted';
-  $handler->display->display_options['fields']['field_date_published']['element_type'] = 'span';
-  $handler->display->display_options['fields']['field_date_published']['element_label_type'] = 'span';
-  $handler->display->display_options['fields']['field_date_published']['settings'] = array(
-    'format_type' => 'gsb_format_year',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => 'show',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -534,39 +514,6 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Authors */
-  $handler->display->display_options['fields']['field_person_fac_student_other']['id'] = 'field_person_fac_student_other';
-  $handler->display->display_options['fields']['field_person_fac_student_other']['table'] = 'field_data_field_person_fac_student_other';
-  $handler->display->display_options['fields']['field_person_fac_student_other']['field'] = 'field_person_fac_student_other';
-  $handler->display->display_options['fields']['field_person_fac_student_other']['type'] = 'field_collection_fields';
-  $handler->display->display_options['fields']['field_person_fac_student_other']['settings'] = array(
-    'view_mode' => 'research_pager',
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  $handler->display->display_options['fields']['field_person_fac_student_other']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_person_fac_student_other']['separator'] = '; ';
-  /* Field: Field: Body */
-  $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
-  $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
-  $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
-  $handler->display->display_options['fields']['field_body']['label'] = '';
-  $handler->display->display_options['fields']['field_body']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_body']['alter']['max_length'] = '250';
-  $handler->display->display_options['fields']['field_body']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_body']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_body']['alter']['html'] = TRUE;
-  $handler->display->display_options['fields']['field_body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_body']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Content: All taxonomy terms */
   $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
@@ -600,22 +547,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['arguments']['field_tag_tid']['table'] = 'field_data_field_tag';
   $handler->display->display_options['arguments']['field_tag_tid']['field'] = 'field_tag_tid';
   $handler->display->display_options['arguments']['field_tag_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_tag_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_tag_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_tag_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_tag_tid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_tag_tid']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['vocabularies'] = array(
-    'business_insight_topic' => 'business_insight_topic',
-    'company_organization' => 'company_organization',
-    'discipline' => 'discipline',
-    'industry' => 'industry',
-    'region' => 'region',
-    'tag' => 'tag',
-    'target_audience' => 'target_audience',
-  );
-  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['type'] = 'convert';
-  $handler->display->display_options['arguments']['field_tag_tid']['validate']['fail'] = 'ignore';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -628,7 +560,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'publication' => 'publication',
+    'media_mention' => 'media_mention',
   );
   /* Filter criterion: Content: Academic Area (field_academic_area_unlimited) */
   $handler->display->display_options['filters']['field_academic_area_unlimited_tid']['id'] = 'field_academic_area_unlimited_tid';
@@ -705,6 +637,28 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'no results found.';
   $handler->display->display_options['empty']['area']['format'] = 'panopoly_wysiwyg_text';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Tag (field_tag) */
+  $handler->display->display_options['arguments']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['arguments']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tag_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_tag_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['vocabularies'] = array(
+    'business_insight_topic' => 'business_insight_topic',
+    'company_organization' => 'company_organization',
+    'discipline' => 'discipline',
+    'industry' => 'industry',
+    'region' => 'region',
+    'tag' => 'tag',
+    'target_audience' => 'target_audience',
+  );
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_tag_tid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['argument_input'] = array(
     'field_tag_tid' => array(
       'type' => 'panel',
@@ -754,7 +708,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'publication' => 'publication',
+    'media_mention' => 'media_mention',
   );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
@@ -781,6 +735,28 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Tag (field_tag) */
+  $handler->display->display_options['arguments']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['arguments']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['arguments']['field_tag_tid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_tag_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tag_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tag_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_tag_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['vocabularies'] = array(
+    'business_insight_topic' => 'business_insight_topic',
+    'company_organization' => 'company_organization',
+    'discipline' => 'discipline',
+    'industry' => 'industry',
+    'region' => 'region',
+    'tag' => 'tag',
+    'target_audience' => 'target_audience',
+  );
+  $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -795,7 +771,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'publication' => 'publication',
+    'media_mention' => 'media_mention',
   );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
