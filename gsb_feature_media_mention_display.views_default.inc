@@ -355,12 +355,12 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'no results found.';
   $handler->display->display_options['empty']['area']['format'] = 'panopoly_wysiwyg_text';
   /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['id'] = 'sm_field_image_apachesolr';
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['table'] = 'apachesolr__acquia_search_server_1';
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['field'] = 'sm_field_image_apachesolr';
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['label'] = '';
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['sm_field_image_apachesolr']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['id'] = 'ss_field_image_apachesolr';
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['table'] = 'apachesolr__acquia_search_server_1';
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['field'] = 'ss_field_image_apachesolr';
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['label'] = '';
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['ss_field_image_apachesolr']['hide_empty'] = TRUE;
   /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'apachesolr__acquia_search_server_1';
