@@ -98,7 +98,7 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'main';
     $pane->type = 'block';
-    $pane->subtype = 'views-321056e1b72e1c3dd00f119a33ec5110';
+    $pane->subtype = 'views-afaf08445aabef87b414ba6b8c1ee27a';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -165,7 +165,7 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
     $pane->pid = 'new-3';
     $pane->panel = 'main';
     $pane->type = 'views_panes';
-    $pane->subtype = 'media_mention_filters-medai_mention_list';
+    $pane->subtype = 'media_mention_filters-media_mention_list';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(

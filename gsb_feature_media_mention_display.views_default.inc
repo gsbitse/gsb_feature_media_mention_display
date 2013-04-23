@@ -15,7 +15,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'apachesolr__acquia_search_server_1';
-  $view->human_name = 'Media Mention';
+  $view->human_name = 'Media Mention search';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -135,6 +135,8 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Media Mention Solr', 'media_mention_solr');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['pane_category']['name'] = 'GSB Content Panes';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $export['media_mention'] = $view;
 
   $view = new view();
@@ -360,7 +362,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth_2']['depth'] = '10';
 
   /* Display: Media Mention list */
-  $handler = $view->new_display('panel_pane', 'Media Mention list', 'medai_mention_list');
+  $handler = $view->new_display('panel_pane', 'Media Mention list', 'media_mention_list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-list-teaser';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
@@ -395,6 +397,8 @@ function gsb_feature_media_mention_display_views_default_views() {
   );
   $handler->display->display_options['arguments']['field_tag_tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['field_tag_tid']['validate']['fail'] = 'ignore';
+  $handler->display->display_options['pane_category']['name'] = 'GSB Content Panes';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -416,7 +420,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   );
 
   /* Display: Media Mention by id or tag */
-  $handler = $view->new_display('panel_pane', 'Media Mention by id or tag', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'Media Mention by id or tag', 'media_mention_by_id_or_tag');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-list-teaser';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
