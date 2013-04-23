@@ -529,7 +529,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth_2']['group'] = 2;
   $handler->display->display_options['filters']['term_node_tid_depth_2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['operator_id'] = 'term_node_tid_depth_2_op';
-  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['label'] = 'Discipline';
+  $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['label'] = 'Industry';
   $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['operator'] = 'term_node_tid_depth_2_op';
   $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['identifier'] = 'term_node_tid_depth_2';
   $handler->display->display_options['filters']['term_node_tid_depth_2']['expose']['multiple'] = TRUE;
