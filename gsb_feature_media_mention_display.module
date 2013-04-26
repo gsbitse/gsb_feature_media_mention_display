@@ -57,6 +57,6 @@ function gsb_feature_media_mention_display_preprocess_views_view_fields(&$variab
       'path' => $variables['fields']['ss_field_image_apachesolr']->raw,
     );
 
-    $variables['fields']['ss_field_image_apachesolr']->content = theme('image_style', $settings);
+    $variables['fields']['ss_field_image_apachesolr']->content = str_replace($variables['fields']['ss_field_image_apachesolr']->raw, theme('image_style', $settings), $variables['fields']['ss_field_image_apachesolr']->content);
   }
 }
