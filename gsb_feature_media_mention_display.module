@@ -60,3 +60,15 @@ function gsb_feature_media_mention_display_preprocess_views_view_fields(&$variab
     $variables['fields']['ss_field_image_apachesolr']->content = str_replace($variables['fields']['ss_field_image_apachesolr']->raw, theme('image_style', $settings), $variables['fields']['ss_field_image_apachesolr']->content);
   }
 }
+/**
+ * Implements hook_preprocess_views_view
+ *
+ * Override more link to show link to filter page without filter parameters;
+ */
+function gsb_feature_media_mention_display_preprocess_views_view(&$vars) {
+  if ($vars['view']->name == 'media_mention_filters' && $vars['view']->current_display == 'media_mention_by_id_or_tag') {
+    $more_url = $vars['view']->display['media_mention_by_id_or_tag']->display_options['link_url'];
+    $more_text = $vars['view']->display['media_mention_by_id_or_tag']->display_options['use_more_text'];
+    $vars['more'] = theme('views_more', array('more_url' => '/' . $more_url, 'link_text' => check_plain($more_text), 'view' => $vars['view']));
+  }
+}
