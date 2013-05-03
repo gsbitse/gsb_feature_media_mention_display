@@ -432,7 +432,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'View more like this';
+  $handler->display->display_options['use_more_text'] = 'Show all';
   $handler->display->display_options['link_url'] = 'newsroom/media-mentions';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
