@@ -72,3 +72,39 @@ function gsb_feature_media_mention_display_preprocess_views_view(&$vars) {
     $vars['more'] = theme('views_more', array('more_url' => '/' . $more_url, 'link_text' => check_plain($more_text), 'view' => $vars['view']));
   }
 }
+
+/**
+ * Implements hook_fieldable_panels_pane_view().
+ */
+function gsb_feature_media_mention_display_fieldable_panels_pane_view($entity, $view_mode, $langcode) {
+  $show = FALSE;
+  // Check if this is a BI node.
+  if ($node = menu_get_object()) {
+    $show = $node->type == 'business_insight';
+  }
+  // Check if this is a BI landing page.
+  else {
+    $item = menu_get_item();
+    $show = $item['path'] == 'business-insights';
+  }
+
+  // Check if this is a media_mention existing node.
+  $wrapper = entity_metadata_wrapper('fieldable_panels_pane', $entity);
+  if (!$show || $wrapper->getBundle() != 'existing_node' || $wrapper->field_existing_node_fpp_ref->getBundle() != 'media_mention') {
+    return;
+  }
+
+  $entity->content['gsb_feature_media_mention_display_top_bar'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'top-bar',
+      ),
+    ),
+    'link' => array(
+      '#type' => 'link',
+      '#title' => t('Media Mentions'),
+      '#href' => "newsroom/media-mentions",
+    ),
+  );
+}
