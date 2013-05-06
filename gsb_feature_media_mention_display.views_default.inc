@@ -25,6 +25,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   $handler->display->display_options['css_class'] = 'view-list-search';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -47,7 +48,7 @@ function gsb_feature_media_mention_display_views_default_views() {
     ),
   );
   $handler->display->display_options['pager']['type'] = 'load_more';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -134,6 +135,7 @@ function gsb_feature_media_mention_display_views_default_views() {
   /* Display: Media Mention Solr */
   $handler = $view->new_display('panel_pane', 'Media Mention Solr', 'media_mention_solr');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['link_url'] = 'newsroom/media-mentions';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['pane_category']['name'] = 'GSB Content Panes';
   $handler->display->display_options['pane_category']['weight'] = '0';
