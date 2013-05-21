@@ -17,16 +17,7 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'newsroom/media-mentions';
   $page->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'search content',
-        ),
-        'context' => 'logged-in-user',
-        'not' => FALSE,
-      ),
-    ),
+    'plugins' => array(),
     'logic' => 'and',
     'type' => 'none',
     'settings' => NULL,
@@ -46,21 +37,12 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'Solr Search Panel',
+    'title' => 'Listing Panel',
     'no_blocks' => 0,
     'pipeline' => 'ipe',
-    'css_id' => 'solr-search-panel',
+    'css_id' => '',
     'css' => '',
-    'contexts' => array(
-      1 => array(
-        'identifier' => 'Query string value',
-        'keyword' => 'Keywords',
-        'name' => 'query_string',
-        'key' => 'keyword',
-        'fallback_value' => '',
-        'id' => 1,
-      ),
-    ),
+    'contexts' => array(),
     'relationships' => array(),
     'access' => array(
       'plugins' => array(),
@@ -70,6 +52,8 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
     'panels_breadcrumbs_titles' => 'Search',
     'panels_breadcrumbs_paths' => 'search/site',
     'panels_breadcrumbs_home' => 1,
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
   );
   $display = new panels_display();
   $display->layout = 'gsb-standard-page-two';
@@ -116,16 +100,7 @@ function gsb_feature_media_mention_display_default_page_manager_pages() {
     $pane->subtype = 'media_mention_filters-media_mention_list';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'context_exists',
-          'settings' => array(
-            'exists' => '0',
-          ),
-          'context' => 'context_query_string_1',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     );
     $pane->configuration = array(
       'widget_title' => NULL,
