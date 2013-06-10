@@ -18,3 +18,4 @@ features[features_api][] = api:1
 features[page_manager_pages][] = media_mention_search_page
 features[views_view][] = media_mention_filters
 project path = profiles/gsb_public/modules/custom/features
+
